@@ -1,0 +1,48 @@
+# Ignore composer dependencies
+/vendor
+
+# Ignore environment variables
+/.env
+
+# Ignore IDE specific files
+/.vscode
+/.idea
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore node_modules if you are using Node.js
+/node_modules
+
+# Ignore Laravel specific files (if applicable)
+/bootstrap/cache
+/storage/*.key
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+
+# Ignore other sensitive files
+.env.*
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignore PHPStorm specific files
+/.phpstorm.meta.php
+
+# Ignore PHPUnit result cache
+.phpunit.result.cache
+
+# Ignore coverage reports
+/coverage
+
+# Ignore build artifacts
+/build
