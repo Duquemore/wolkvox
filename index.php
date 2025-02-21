@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos Wolkvox</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,16 +34,27 @@
 </head>
 
 <body>
-    <h1>Lista de Productos</h1>
-    <div class="product-list" id="product-list">
-        <!-- Aquí se mostrarán los productos -->
+    <div class="container">
+        <h1 class="my-4">Lista de Productos</h1>
+        <div class="product-list" id="product-list">
+            <!-- Aquí se mostrarán los productos -->
+        </div>
+        <h2 class="my-4">Agregar Producto</h2>
+        <form class="product-form" id="product-form">
+            <div class="form-group">
+                <input type="text" class="form-control" name="product-name" placeholder="Nombre del producto" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="product-price" placeholder="Precio del producto" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
     </div>
-    <h2>Agregar Producto</h2>
-    <form class="product-form" id="product-form">
-        <input type="text" name="product-name" placeholder="Nombre del producto" required>
-        <input type="number" name="product-price" placeholder="Precio del producto" required>
-        <button type="submit">Agregar</button>
-    </form>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -68,16 +81,22 @@
                 productList.innerHTML = '';
                 products.forEach((product, index) => {
                     const productItem = document.createElement('div');
-                    productItem.className = 'product-item';
+                    productItem.className = 'product-item card p-3 mb-3';
                     productItem.innerHTML = `
-                        <span>${product.name}</span>
-                        <span>$${parseFloat(product.price).toFixed(2)}</span>
-                        <form class="edit-form" data-index="${index}">
-                            <input type="text" name="product-name" value="${product.name}" required>
-                            <input type="number" name="product-price" value="${product.price}" required>
-                            <button type="submit">Guardar</button>
-                        </form>
-                        <button class="delete-button" data-index="${index}">Eliminar</button>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="font-weight-bold">${product.name}</span>
+                                <span class="text-muted">$${parseFloat(product.price).toFixed(2)}</span>
+                            </div>
+                            <div>
+                                <form class="edit-form d-inline" data-index="${index}">
+                                    <input type="text" class="form-control d-inline-block" name="product-name" value="${product.name}" required>
+                                    <input type="number" class="form-control d-inline-block" name="product-price" value="${product.price}" required>
+                                    <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+                                </form>
+                                <button class="btn btn-sm btn-danger delete-button" data-index="${index}">Eliminar</button>
+                            </div>
+                        </div>
                     `;
                     productList.appendChild(productItem);
                 });
