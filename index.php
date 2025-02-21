@@ -12,7 +12,9 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-
+        .container {
+            width: 30%;
+        }
         .product-list {
             margin-bottom: 20px;
         }
