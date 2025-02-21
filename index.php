@@ -105,10 +105,11 @@
             productList.addEventListener('submit', async (event) => {
                 if (event.target.classList.contains('edit-form')) {
                     event.preventDefault();
-                    const index = event.target.dataset.index;
+                    const index = String(Number(event.target.dataset.index) + 1);
+                    console.log(index);
                     const formData = new FormData(event.target);
                     const product = {
-                        index: index + 1,
+                        index: index,
                         name: formData.get('product-name'),
                         price: parseFloat(formData.get('product-price'))
                     };
@@ -126,7 +127,7 @@
             // Handle button click for deleting products
             productList.addEventListener('click', async (event) => {
                 if (event.target.classList.contains('delete-button')) {
-                    const index = event.target.dataset.index + 1;
+                    const index = String(Number(event.target.dataset.index) + 1);
                     await fetch('api.php', {
                         method: 'DELETE',
                         headers: {
