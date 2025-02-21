@@ -12,9 +12,7 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        .container {
-            width: 30%;
-        }
+
         .product-list {
             margin-bottom: 20px;
         }
@@ -36,21 +34,25 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="my-4">Lista de Productos</h1>
-        <div class="product-list" id="product-list">
-            <!-- Aquí se mostrarán los productos -->
+    <div class="container-fluid row">
+        <div class="col-4">
+            <h2 class="my-4">Agregar Producto</h2>
+            <form class="product-form" id="product-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="product-name" placeholder="Nombre del producto" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" name="product-price" placeholder="Precio del producto" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </form>
         </div>
-        <h2 class="my-4">Agregar Producto</h2>
-        <form class="product-form" id="product-form">
-            <div class="form-group">
-                <input type="text" class="form-control" name="product-name" placeholder="Nombre del producto" required>
+        <div class="col-8">
+            <h1 class="my-4">Lista de Productos</h1>
+            <div class="product-list" id="product-list">
+                <!-- Aquí se mostrarán los productos -->
             </div>
-            <div class="form-group">
-                <input type="number" class="form-control" name="product-price" placeholder="Precio del producto" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-        </form>
+        </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
@@ -154,7 +156,9 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ index: index })
+                        body: JSON.stringify({
+                            index: index
+                        })
                     });
                     fetchProducts();
                 }
